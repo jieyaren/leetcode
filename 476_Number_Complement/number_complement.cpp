@@ -4,7 +4,7 @@ class Solution {
 public:
     int findComplement(int num) 
     {
-        checkNumOne(num);
+        //checkNumOne(num);
         int i=0;
         for(; pow(2,i)<=num; ++i)
         {
