@@ -5,4 +5,5 @@
 			2.manacher算法。在字符中间加入#字符，让abba型的字符串对称，最后从以回文中心扩散寻找最长回文串。O（n）
 			3.动态规划？
 	我好弱啊每道题都想不出来
+	manacher攻略 http://articles.leetcode.com/longest-palindromic-substring-part-ii
 		  
