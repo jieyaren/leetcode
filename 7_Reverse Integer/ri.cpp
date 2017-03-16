@@ -1,10 +1,12 @@
 class Solution {
 public:
-    uint32_t  reverseBits(uint32_t n) {
-        uint32_t result= 0;
-        for(int i=0; i<32; i++)
-            result = (result<<1) + (n>>i &1);
-        
-        return result;
+    int reverse(int x)
+    {
+        long long res = 0;
+        for(;x!=0;x/=10) 
+        {
+            res = res*10 + x%10;
+        }
+        return (res<INT_MIN || res>INT_MAX) ? 0 : res;
     }
 };
