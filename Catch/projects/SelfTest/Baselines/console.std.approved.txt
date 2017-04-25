@@ -4,6 +4,31 @@
 Run with -? for options
 
 -------------------------------------------------------------------------------
+#748 - captures with unexpected exceptions
+  outside assertions
+-------------------------------------------------------------------------------
+ExceptionTests.cpp:<line number>
+...............................................................................
+
+ExceptionTests.cpp:<line number>: FAILED:
+due to unexpected exception with messages:
+  answer := 42
+  expected exception
+
+-------------------------------------------------------------------------------
+#748 - captures with unexpected exceptions
+  inside REQUIRE_NOTHROW
+-------------------------------------------------------------------------------
+ExceptionTests.cpp:<line number>
+...............................................................................
+
+ExceptionTests.cpp:<line number>: FAILED:
+  REQUIRE_NOTHROW( thisThrows() )
+due to unexpected exception with messages:
+  answer := 42
+  expected exception
+
+-------------------------------------------------------------------------------
 #835 -- errno should not be touched by Catch
 -------------------------------------------------------------------------------
 MiscTests.cpp:<line number>
@@ -915,6 +940,6 @@ with expansion:
   "first" == "second"
 
 ===============================================================================
-test cases: 166 | 119 passed | 44 failed |  3 failed as expected
-assertions: 961 | 855 passed | 87 failed | 19 failed as expected
+test cases: 167 | 119 passed | 44 failed |  4 failed as expected
+assertions: 967 | 859 passed | 87 failed | 21 failed as expected
 

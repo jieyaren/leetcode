@@ -80,12 +80,19 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Cygwin
-#ifdef __CYGWIN__
+// We know some environments not to support full POSIX signals
+#if defined(__CYGWIN__) || defined(__QNX__)
 
 #   if !defined(CATCH_CONFIG_POSIX_SIGNALS)
 #       define CATCH_INTERNAL_CONFIG_NO_POSIX_SIGNALS
 #   endif
+
+#endif
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Cygwin
+#ifdef __CYGWIN__
 
 // Required for some versions of Cygwin to declare gettimeofday
 // see: http://stackoverflow.com/questions/36901803/gettimeofday-not-declared-in-this-scope-cygwin
@@ -118,22 +125,9 @@
 // GCC
 #ifdef __GNUC__
 
-#   if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8)
-#       define CATCH_GCC_HAS_NEW_PRAGMA
-#   endif
-
 #   if __GNUC__ == 4 && __GNUC_MINOR__ >= 6 && defined(__GXX_EXPERIMENTAL_CXX0X__)
 #       define CATCH_INTERNAL_CONFIG_CPP11_NULLPTR
 #   endif
-
-#   if !defined(CATCH_INTERNAL_SUPPRESS_PARENTHESES_WARNINGS) && defined(CATCH_GCC_HAS_NEW_PRAGMA)
-#       define CATCH_INTERNAL_SUPPRESS_PARENTHESES_WARNINGS \
-            _Pragma( "GCC diagnostic push" ) \
-            _Pragma( "GCC diagnostic ignored \"-Wparentheses\"" )
-#       define CATCH_INTERNAL_UNSUPPRESS_PARENTHESES_WARNINGS \
-            _Pragma( "GCC diagnostic pop" )
-#   endif
-
 
 
 // - otherwise more recent versions define __cplusplus >= 201103L

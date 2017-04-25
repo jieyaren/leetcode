@@ -37,6 +37,9 @@ a small and easy to use C++11 library that adds a functionality set that will be
 ### [nanodbc](https://github.com/lexicalunit/nanodbc/)
 A small C++ library wrapper for the native C ODBC API.
 
+### [Nonius](https://github.com/libnonius/nonius)
+A header-only framework for benchmarking small snippets of C++ code.
+
 ### [SOCI](https://github.com/SOCI/soci)
 The C++ Database Access Library
 
@@ -59,6 +62,9 @@ ArangoDB is a native multi-model database with flexible data models for document
 
 ### [MAME](https://github.com/mamedev/mame)
 MAME originally stood for Multiple Arcade Machine Emulator
+
+### [Newsbeuter](https://github.com/akrennmair/newsbeuter)
+Newsbeuter is an open-source RSS/Atom feed reader for text terminals.
 
 ### [Standardese](https://github.com/foonathan/standardese)
 Standardese aims to be a nextgen Doxygen

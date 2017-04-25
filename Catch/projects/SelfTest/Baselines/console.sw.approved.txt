@@ -15,26 +15,42 @@ with message:
   yay
 
 -------------------------------------------------------------------------------
-#542
+#748 - captures with unexpected exceptions
+  outside assertions
 -------------------------------------------------------------------------------
-CompilationTests.cpp:<line number>
+ExceptionTests.cpp:<line number>
 ...............................................................................
 
-CompilationTests.cpp:<line number>:
-PASSED:
-  CHECK_THROWS_AS( throws_int(true), int )
+ExceptionTests.cpp:<line number>: FAILED:
+due to unexpected exception with messages:
+  answer := 42
+  expected exception
 
-CompilationTests.cpp:<line number>:
-PASSED:
-  CHECK_THROWS_AS( throws_int(true), int& )
+-------------------------------------------------------------------------------
+#748 - captures with unexpected exceptions
+  inside REQUIRE_NOTHROW
+-------------------------------------------------------------------------------
+ExceptionTests.cpp:<line number>
+...............................................................................
 
-CompilationTests.cpp:<line number>:
-PASSED:
-  CHECK_THROWS_AS( throws_int(true), const int )
+ExceptionTests.cpp:<line number>: FAILED:
+  REQUIRE_NOTHROW( thisThrows() )
+due to unexpected exception with messages:
+  answer := 42
+  expected exception
 
-CompilationTests.cpp:<line number>:
+-------------------------------------------------------------------------------
+#748 - captures with unexpected exceptions
+  inside REQUIRE_THROWS
+-------------------------------------------------------------------------------
+ExceptionTests.cpp:<line number>
+...............................................................................
+
+ExceptionTests.cpp:<line number>:
 PASSED:
-  CHECK_THROWS_AS( throws_int(true), const int& )
+  REQUIRE_THROWS( thisThrows() )
+with message:
+  answer := 42
 
 -------------------------------------------------------------------------------
 #809
@@ -47,6 +63,48 @@ PASSED:
   REQUIRE( 42 == f )
 with expansion:
   42 == {?}
+
+-------------------------------------------------------------------------------
+#833
+-------------------------------------------------------------------------------
+CompilationTests.cpp:<line number>
+...............................................................................
+
+CompilationTests.cpp:<line number>:
+PASSED:
+  REQUIRE( a == t )
+with expansion:
+  3 == 3
+
+CompilationTests.cpp:<line number>:
+PASSED:
+  CHECK( a == t )
+with expansion:
+  3 == 3
+
+CompilationTests.cpp:<line number>:
+PASSED:
+  REQUIRE_THROWS( throws_int(true) )
+
+CompilationTests.cpp:<line number>:
+PASSED:
+  CHECK_THROWS_AS( throws_int(true), const int& )
+
+CompilationTests.cpp:<line number>:
+PASSED:
+  REQUIRE_NOTHROW( throws_int(false) )
+
+CompilationTests.cpp:<line number>:
+PASSED:
+  REQUIRE_THAT( "aaa", Catch::EndsWith("aaa") )
+with expansion:
+  "aaa" ends with: "aaa"
+
+CompilationTests.cpp:<line number>:
+PASSED:
+  REQUIRE( templated_tests<int>(3) )
+with expansion:
+  true
 
 -------------------------------------------------------------------------------
 #835 -- errno should not be touched by Catch
@@ -6807,7 +6865,8 @@ PASSED:
 with expansion:
   "error: tag alias, "[@zzz]" already registered.
   	First seen at file:2
-  	Redefined at file:10" contains: "[@zzz]"
+  	Redefined at file:10
+  " contains: "[@zzz]"
 
 TagAliasTests.cpp:<line number>:
 PASSED:
@@ -6815,7 +6874,8 @@ PASSED:
 with expansion:
   "error: tag alias, "[@zzz]" already registered.
   	First seen at file:2
-  	Redefined at file:10" contains: "file"
+  	Redefined at file:10
+  " contains: "file"
 
 TagAliasTests.cpp:<line number>:
 PASSED:
@@ -6823,7 +6883,8 @@ PASSED:
 with expansion:
   "error: tag alias, "[@zzz]" already registered.
   	First seen at file:2
-  	Redefined at file:10" contains: "2"
+  	Redefined at file:10
+  " contains: "2"
 
 TagAliasTests.cpp:<line number>:
 PASSED:
@@ -6831,7 +6892,8 @@ PASSED:
 with expansion:
   "error: tag alias, "[@zzz]" already registered.
   	First seen at file:2
-  	Redefined at file:10" contains: "10"
+  	Redefined at file:10
+  " contains: "10"
 
 -------------------------------------------------------------------------------
 Tag alias can be registered against tag patterns
@@ -9404,6 +9466,6 @@ MiscTests.cpp:<line number>:
 PASSED:
 
 ===============================================================================
-test cases: 166 | 118 passed | 45 failed |  3 failed as expected
-assertions: 963 | 855 passed | 89 failed | 19 failed as expected
+test cases: 167 | 118 passed | 45 failed |  4 failed as expected
+assertions: 969 | 859 passed | 89 failed | 21 failed as expected
 

@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuitesspanner>
-  <testsuite name="<exe-name>" errors="13" failures="77" tests="964" hostname="tbd" time="{duration}" timestamp="{iso8601-timestamp}">
+  <testsuite name="<exe-name>" errors="15" failures="75" tests="970" hostname="tbd" time="{duration}" timestamp="{iso8601-timestamp}">
     <testcase classname="global" name="# A test name that starts with a #" time="{duration}"/>
-    <testcase classname="global" name="#542" time="{duration}"/>
+    <testcase classname="#748 - captures with unexpected exceptions" name="outside assertions" time="{duration}">
+      <error type="TEST_CASE">
+expected exception
+answer := 42
+ExceptionTests.cpp:<line number>
+      </error>
+    </testcase>
+    <testcase classname="#748 - captures with unexpected exceptions" name="inside REQUIRE_NOTHROW" time="{duration}">
+      <error message="thisThrows()" type="REQUIRE_NOTHROW">
+expected exception
+answer := 42
+ExceptionTests.cpp:<line number>
+      </error>
+    </testcase>
+    <testcase classname="#748 - captures with unexpected exceptions" name="inside REQUIRE_THROWS" time="{duration}"/>
     <testcase classname="global" name="#809" time="{duration}"/>
+    <testcase classname="global" name="#833" time="{duration}"/>
     <testcase classname="global" name="#835 -- errno should not be touched by Catch" time="{duration}">
       <failure message="1 == 0" type="CHECK">
 MiscTests.cpp:<line number>
