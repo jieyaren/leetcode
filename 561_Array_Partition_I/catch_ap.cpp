@@ -3,7 +3,7 @@
 #include "ap.hpp"
 
 
-TEST_CASE("575_Distribute_Candies")
+TEST_CASE("Array Partition I")
 {
 	Solution s;
 	std::vector<int> v1={1,1,2,2,3,3};
@@ -18,7 +18,7 @@ TEST_CASE("575_Distribute_Candies")
 	std::vector<int> v4={1,1,2,3};
 	REQUIRE(s.arrayPairSum(v4)==3);
 
-	std::vector<int> v5={1,4,2,3,5,6,7,1};//1 2 4 6
+	std::vector<int> v5={1,4,2,3,5,6,7,1};
 	REQUIRE(s.arrayPairSum(v5)==13);
 
 	std::vector<int> v6={1,1,1,1,2,2,2,2};
