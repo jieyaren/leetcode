@@ -19,4 +19,7 @@ TEST_CASE("Search for a Range with STL")
 	std::vector<int> ans3_1={3,4},ans3_2={5,5};
 	REQUIRE(s.searchRange(v3,8)==ans3_1);
 	REQUIRE(s.searchRange(v3,10)==ans3_2);
+
+	std::vector<int> v4={},ans4={-1,-1};
+	REQUIRE(s.searchRange(v4,0)==ans4);
 }
