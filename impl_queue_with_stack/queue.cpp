@@ -83,7 +83,7 @@ TEST(queue,stack)
 	q.pop();
 	
     std::cout << q.top() << std::endl;
-    ASSERT_EQ(q.top(),6);
+    ASSERT_EQ(q.top(),9);
 	q.pop();
 	
     std::cout << q.top() << std::endl;
